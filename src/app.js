@@ -34,7 +34,7 @@ app.put('/repositories/:id',(request,response)=>{
     
  
     if(findRepositoryIndex == -1){
-        return response.status(400).json({'error':'Repositorio não existi'})
+        return response.status(400).json({error:'Repositorio não existi'})
     }
 
     const newRepository = {
@@ -67,18 +67,18 @@ app.delete('/repositories/:id',(request,response)=>{
 
 });
 
-app.post('/repositories/:id/likes', (request,response)=>{
+app.post('/repositories/:id/like', (request,response)=>{
     const {id} = request.params;
 
     const findRepositoryIndex = repositories.findIndex(repository => repository.id == id);
 
     if(findRepositoryIndex == -1){
-        return response.status(400).json({error:'Repositorio não existi'})
+        return response.status(400).json({error:'Repositório não existi'})
     }
 
-    repositories[findRepositoryIndex].likes +=1;
+    repositories[findRepositoryIndex].likes+=1;
 
-    return response.json(repositories[findRepositoryIndex])
+    return response.json(repositories[findRepositoryIndex]);
 })
 
 
